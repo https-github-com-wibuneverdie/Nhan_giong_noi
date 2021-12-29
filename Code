@@ -1,19 +1,12 @@
 import tkinter as tk
 from tkinter import *
-from PIL import Image,ImageTk
 import speech_recognition as sr
 #tao giao dien bang tkinter
 main=Tk()
-main.title('Speech into Text')
+main.title('Túeday')
 canvas=tk.Canvas(main,width=700, height=700)
 canvas.config(bg='pink')
 canvas.grid(columnspan=3,rowspan=4)
-#logo
-logo=Image.open('264079285_n.png')
-logo=ImageTk.PhotoImage(logo)
-logo_label=tk.Label(image=logo)
-logo_label.image=logo
-logo_label.grid(columnspan=3,column=0, row=0)
 #huong dan
 hd=tk.Label(main,text='Welcome my Master!',fg='black',bg='pink')
 hd.config(font=('Tahoma', 33,'bold'))
@@ -24,17 +17,17 @@ cnn.grid(column=0,row=2)
 def tienganh():
     c=sr.Recognizer()
     with sr.Microphone() as source:
-        c.pause_threshold=0.5
+        c.pause_threshold=2
         audio=c.listen(source)
         said=c.recognize_google(audio,language='en')
-        textbox.insert(tk.END, said)
+        textbox.insert(tk.END," "+said)
 def tiengviet():
     c=sr.Recognizer()
     with sr.Microphone() as source:
-        c.pause_threshold=0.5
+        c.pause_threshold=2
         audio=c.listen(source)
         said=c.recognize_google(audio,language='vi')
-        textbox.insert(tk.END, said) #in ra textbox
+        textbox.insert(tk.END," "+said) #in ra textbox
 #nut bam
 nutbama=tk.Button(main, text='English',command=tienganh,height=1,width=9,bg='#CD5E77',fg='white')
 nutbama.config(font=('Ink Free',20,'bold'))
